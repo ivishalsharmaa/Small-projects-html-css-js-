@@ -1,0 +1,31 @@
+
+body{
+    background-color: black;
+}
+.main{
+    justify-content: center;
+    align-items: center;
+    right: 50%;
+}
+.container{
+    width: 75%;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    
+}
+
+.container img{
+    width: 10%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid white;
+    transform: all ease-in-out 0.5se;
+}
+
+.container img:hover{
+    width: 25%;
+}
