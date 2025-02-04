@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burning Candle</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+        }
+        .candle {
+            position: relative;
+            width: 40px;
+            height: 100px;
+            background-color: #ffcc66;
+            border-radius: 10px;
+        }
+        .flame {
+            position: absolute;
+            top: -42px;
+            left: 50%;
+            width: 25px;
+            height: 40px;
+            background: radial-gradient(circle, yellow 20%, orange 60%, red 90%);
+            border-radius: 50% 50% 40% 40%;
+            animation: flicker 0.2s infinite alternate;
+        }
+        @keyframes flicker {
+            0% {
+                transform: translateX(-50%) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-50%) scale(1.2);
+                opacity: 0.85;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="candle">
+        <div class="flame" id="flame"></div>
+    </div>
+    <script>
+        function randomFlicker() {
+            let flame = document.getElementById("flame");
+            setInterval(() => {
+                let scale = 1 + Math.random() * 0.3;
+                let opacity = 0.05 + Math.random() * 0.15;
+                flame.style.transform = `translateX(-50%) scale(${scale})`;
+                flame.style.opacity = opacity;
+            }, 150);
+        }
+        randomFlicker();
+    </script>
+</body>
+</html>
