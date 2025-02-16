@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            background-color: black;
+        }
+        .container {
+            background: rgb(0, 0, 0);
+            padding: 20px;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            box-shadow: 0px 0px 15px rgb(0, 255, 251);
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            cursor: pointer;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Age Calculator</h2>
+        <label for="birthdate">Enter Your Birthdate:</label> <br>
+        <input type="date" id="birthdate"> <br>
+        <button onclick="calculateAge()"> Calculate Age</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculateAge() {
+            let birthdate = document.getElementById('birthdate').value;
+            if (!birthdate) {
+                document.getElementById('result').innerText = 'Please select a valid date';
+                return;
+            }
+            let birthDateObj = new Date(birthdate);
+            let today = new Date();
+            
+            let years = today.getFullYear() - birthDateObj.getFullYear();
+            let months = today.getMonth() - birthDateObj.getMonth();
+            let days = today.getDate() - birthDateObj.getDate();
+            
+            if (days < 0) {
+                months--;
+                let lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+                days += lastMonth.getDate();
+            }
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            
+            document.getElementById('result').innerText = `You are ${years} years, ${months} months, and ${days} days old.`;
+        }
+    </script>
+</body>
+</html>
